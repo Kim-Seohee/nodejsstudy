@@ -22,7 +22,7 @@ var server = http.createServer(function(request,response){
     // 5. 해당 파일을 읽어 오는데 두번째 인자인 인코딩(utf-8) 값 없음
     fs.readFile(imgPath, function(error, data) {
       if(error){
-        response.writeHead(500, {'Content-Type':'text/html'});
+        response.writeHead(500, {'Content-Type':'text/plain; charset=utf-8'});
         response.end('500 Internal Server '+error);
       }else{
         // 6. Content-Type 에 4번에서 추출한 mime type 을 입력
@@ -31,7 +31,7 @@ var server = http.createServer(function(request,response){
       }
     });
   }else{
-    response.writeHead(404, {'Content-Type':'text/html'});
+    response.writeHead(404, {'Content-Type':'text/plain; charset=utf-8'});
     response.end('404 Page Not Found');
   }
 });
